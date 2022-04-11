@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { PageProps } from 'gatsby';
-import { Layout, Seo, Input } from '../components';
+import { Layout, Seo, Input, Enlace } from '../components';
 
 type DataProps = {
 	semilla?: number;
