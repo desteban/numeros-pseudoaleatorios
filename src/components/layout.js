@@ -11,7 +11,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 
 import Header from './header';
 import '../sass/index.scss';
-import 'material-design-icons/iconfont/material-icons.css'
+import 'material-design-icons/iconfont/material-icons.css';
 
 const Layout = ({ children }) => {
 	const data = useStaticQuery(graphql`
@@ -27,13 +27,7 @@ const Layout = ({ children }) => {
 	return (
 		<>
 			<Header siteTitle={data.site.siteMetadata?.title || `Title`} />
-			<div
-				style={{
-					margin: `0 auto`,
-					maxWidth: 960,
-					padding: `0 1.0875rem 1.45rem`
-				}}
-			>
+			<div className="contenido">
 				<main>{children}</main>
 				<footer></footer>
 			</div>
@@ -42,7 +36,7 @@ const Layout = ({ children }) => {
 };
 
 Layout.propTypes = {
-	children: PropTypes.node.isRequired
+	children: PropTypes.node.isRequired,
 };
 
 export default Layout;

@@ -2,6 +2,8 @@ import * as React from 'react';
 import { PageProps } from 'gatsby';
 import { Layout, Seo, Input, Enlace } from '../components';
 
+import { calcularSemillaMedios } from "../util";
+
 type DataProps = {
 	semilla?: number;
 	cantidadNumerosR?: number;
@@ -31,13 +33,13 @@ export default class cuadradosMedios extends React.Component<PageProps, DataProp
 		if (String(semilla).length > 3 && semilla !== undefined && cantidadNumerosR >= 1) {
 			for (let i = 0; i < cantidadNumerosR; i++) {
 				let cuadrado: number = Math.pow(semilla, 2);
-				let numeroR: string = this.calcularSemilla(`${cuadrado}`);
+				let numeroR: string = calcularSemillaMedios(`${cuadrado}`);
 				semilla = +numeroR;
 
 				this.agregarRespuesta({
 					semilla: semillaAnterior,
 					cuadrado,
-					numeroR
+					numeroR,
 				});
 				semillaAnterior = numeroR;
 			}
@@ -54,20 +56,20 @@ export default class cuadradosMedios extends React.Component<PageProps, DataProp
 		}
 	}
 
-	calcularSemilla(numero: string) {
-		let cantidad: number = (numero.length - 4) / 2;
-		let semilla: string;
+	// calcularSemilla(numero: string) {
+	// 	let cantidad: number = (numero.length - 4) / 2;
+	// 	let semilla: string;
 
-		if (numero.length % 2 == 0) {
-			semilla = numero.slice(cantidad, -cantidad);
-		}
+	// 	if (numero.length % 2 == 0) {
+	// 		semilla = numero.slice(cantidad, -cantidad);
+	// 	}
 
-		if (numero.length % 2 == 1) {
-			return this.calcularSemilla(`0${numero}`);
-		}
+	// 	if (numero.length % 2 == 1) {
+	// 		return this.calcularSemilla(`0${numero}`);
+	// 	}
 
-		return semilla;
-	}
+	// 	return semilla;
+	// }
 
 	agregarRespuesta(resultado: Respuesta) {
 		let respuestas: Array<Respuesta> = this.state.respuesta;
@@ -111,7 +113,9 @@ export default class cuadradosMedios extends React.Component<PageProps, DataProp
 						onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
 							let numero: number = +event.target.value;
 
-							this.setState({ cantidadNumerosR: numero == 0 ? undefined : numero });
+							this.setState({
+								cantidadNumerosR: numero == 0 ? undefined : numero,
+							});
 						}}
 						onKeyDown={(evt) => this.enter(evt)}
 					/>
@@ -127,11 +131,10 @@ export default class cuadradosMedios extends React.Component<PageProps, DataProp
 					{this.state.respuesta.map((respuesta) => {
 						return (
 							<p key={this.state.respuesta.indexOf(respuesta)}>
-								Y <sub>{this.state.respuesta.indexOf(respuesta)}</sub> = (
-								{respuesta.semilla}) <sup>2</sup> ={respuesta.cuadrado}, X{' '}
-								<sub>{this.state.respuesta.indexOf(respuesta) + 1}</sub> ={' '}
-								{respuesta.numeroR}, r
-								<sub>{this.state.respuesta.indexOf(respuesta) + 1}</sub> = 0.
+								Y <sub>{this.state.respuesta.indexOf(respuesta)}</sub> = ({respuesta.semilla}){' '}
+								<sup>2</sup> ={respuesta.cuadrado}, X{' '}
+								<sub>{this.state.respuesta.indexOf(respuesta) + 1}</sub> = {respuesta.numeroR},
+								r<sub>{this.state.respuesta.indexOf(respuesta) + 1}</sub> = 0.
 								{respuesta.numeroR}
 							</p>
 						);
