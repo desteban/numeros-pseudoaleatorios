@@ -2,7 +2,7 @@ import * as React from 'react';
 import { PageProps } from 'gatsby';
 import { Layout, Seo, Input, Enlace } from '../components';
 
-import { calcularSemillaMedios } from "../util";
+import { calcularSemillaMedios } from '../util';
 
 type DataProps = {
 	semilla?: number;
@@ -55,21 +55,6 @@ export default class cuadradosMedios extends React.Component<PageProps, DataProp
 			alert('La cantidad de numero r debe será mayor a 0');
 		}
 	}
-
-	// calcularSemilla(numero: string) {
-	// 	let cantidad: number = (numero.length - 4) / 2;
-	// 	let semilla: string;
-
-	// 	if (numero.length % 2 == 0) {
-	// 		semilla = numero.slice(cantidad, -cantidad);
-	// 	}
-
-	// 	if (numero.length % 2 == 1) {
-	// 		return this.calcularSemilla(`0${numero}`);
-	// 	}
-
-	// 	return semilla;
-	// }
 
 	agregarRespuesta(resultado: Respuesta) {
 		let respuestas: Array<Respuesta> = this.state.respuesta;
@@ -130,13 +115,20 @@ export default class cuadradosMedios extends React.Component<PageProps, DataProp
 
 					{this.state.respuesta.map((respuesta) => {
 						return (
-							<p key={this.state.respuesta.indexOf(respuesta)}>
-								Y <sub>{this.state.respuesta.indexOf(respuesta)}</sub> = ({respuesta.semilla}){' '}
-								<sup>2</sup> ={respuesta.cuadrado}, X{' '}
-								<sub>{this.state.respuesta.indexOf(respuesta) + 1}</sub> = {respuesta.numeroR},
-								r<sub>{this.state.respuesta.indexOf(respuesta) + 1}</sub> = 0.
-								{respuesta.numeroR}
-							</p>
+							<div key={this.state.respuesta.indexOf(respuesta)}>
+								<p>
+									Y <sub>{this.state.respuesta.indexOf(respuesta)}</sub> = ({respuesta.semilla}
+									) <sup>2</sup> ={respuesta.cuadrado},
+								</p>
+								<p>
+									X <sub>{this.state.respuesta.indexOf(respuesta) + 1}</sub> =
+									{respuesta.numeroR},
+								</p>
+								<p>
+									r<sub>{this.state.respuesta.indexOf(respuesta) + 1}</sub> = 0.
+									{respuesta.numeroR}
+								</p>
+							</div>
 						);
 					})}
 				</div>

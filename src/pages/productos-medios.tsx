@@ -2,6 +2,7 @@ import * as React from 'react';
 import { PageProps } from 'gatsby';
 
 import { Input, Layout, Seo } from '../components';
+import { calcularSemillaMedios } from '../util';
 
 type DataProps = {
 	semilla1?: number;
@@ -11,9 +12,10 @@ type DataProps = {
 };
 
 type Respuesta = {
+	id: number;
 	semilla1: number;
 	semilla2: number;
-	numeoR: string;
+	numeroR: string;
 	resultado: number;
 	semilla: string;
 };
@@ -22,10 +24,63 @@ export default class ProductosMedios extends React.Component<PageProps, DataProp
 	constructor(props: any) {
 		super(props);
 
-		this.state = { respuesta: [], cantidadNumerosR: 2, semilla1: 5015, semilla2: 5734 };
+		this.state = { respuesta: [], cantidadNumerosR: 1, semilla1: 1234, semilla2: 4321 };
 	}
 
-	calcular() {}
+	calcular() {
+		this.limpiarRespuestas();
+
+		let semilla1: number = this.state.semilla1;
+		let semilla2: number = this.state.semilla2;
+		let cantidadNumerosR: number = this.state.cantidadNumerosR;
+
+		if (
+			(String(semilla1).length > 3 && String(semilla2).length > 3 && cantidadNumerosR >= 1) ||
+			semilla1 != undefined ||
+			semilla2 != undefined
+		) {
+			for (let i = 0; i < this.state.cantidadNumerosR; i++) {
+				let resultado: number = semilla1 * semilla2;
+				let numeroR: string = calcularSemillaMedios(`${resultado}`);
+
+				let respuesta: Respuesta = {
+					id: i,
+					semilla1,
+					semilla2,
+					numeroR,
+					resultado,
+					semilla: `0.${numeroR}`,
+				};
+
+				this.agregarRespuesta(respuesta);
+
+				semilla1 = semilla2;
+				semilla2 = +numeroR;
+			}
+		}
+
+		if (
+			(String(semilla1).length <= 3 && String(semilla2).length <= 3) ||
+			semilla1 == undefined ||
+			semilla2 == undefined
+		) {
+		}
+
+		if (cantidadNumerosR <= 0) {
+			alert('La cantidad de numero r debe será mayor a 0');
+		}
+	}
+
+	limpiarRespuestas() {
+		this.state.respuesta.splice(0, this.state.respuesta.length);
+	}
+
+	agregarRespuesta(resultado: Respuesta) {
+		let respuestas: Array<Respuesta> = this.state.respuesta;
+		respuestas.push(resultado);
+
+		this.setState({ respuesta: respuestas });
+	}
 
 	enter(event: React.KeyboardEvent) {}
 
@@ -79,7 +134,20 @@ export default class ProductosMedios extends React.Component<PageProps, DataProp
 					<strong>Resultados:</strong>
 
 					{this.state.respuesta.map((respuesta) => {
-						return <p>Hola</p>;
+						return (
+							<div key={respuesta.id}>
+								<p>
+									Y<sub>{respuesta.id}</sub> = ({respuesta.semilla1}) ({respuesta.semilla2}) ={' '}
+									{respuesta.resultado},
+								</p>
+								<p>
+									X<sub>{respuesta.id + 2}</sub> = {respuesta.numeroR},
+								</p>
+								<p>
+									r<sub>{respuesta.id + 1}</sub> = 0.{respuesta.numeroR}
+								</p>
+							</div>
+						);
 					})}
 				</div>
 			</Layout>
