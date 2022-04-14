@@ -82,7 +82,11 @@ export default class ProductosMedios extends React.Component<PageProps, DataProp
 		this.setState({ respuesta: respuestas });
 	}
 
-	enter(event: React.KeyboardEvent) {}
+	enter(event: React.KeyboardEvent) {
+		if (event.key == 'Enter') {
+			this.calcular();
+		}
+	}
 
 	render(): React.ReactNode {
 		return (
@@ -99,6 +103,7 @@ export default class ProductosMedios extends React.Component<PageProps, DataProp
 							let numero: number = +evt.target.value;
 							this.setState({ semilla1: numero == 0 ? undefined : numero });
 						}}
+						onKeyDown={(evt) => this.enter(evt)}
 					/>
 
 					<Input
@@ -109,6 +114,7 @@ export default class ProductosMedios extends React.Component<PageProps, DataProp
 							let numero: number = +evt.target.value;
 							this.setState({ semilla2: numero == 0 ? undefined : numero });
 						}}
+						onKeyDown={(evt) => this.enter(evt)}
 					/>
 
 					<Input
@@ -138,10 +144,10 @@ export default class ProductosMedios extends React.Component<PageProps, DataProp
 							<div key={respuesta.id}>
 								<p>
 									Y<sub>{respuesta.id}</sub> = ({respuesta.semilla1}) ({respuesta.semilla2}) ={' '}
-									{respuesta.resultado},
+									{respuesta.resultado}
 								</p>
 								<p>
-									X<sub>{respuesta.id + 2}</sub> = {respuesta.numeroR},
+									X<sub>{respuesta.id + 2}</sub> = {respuesta.numeroR}
 								</p>
 								<p>
 									r<sub>{respuesta.id + 1}</sub> = 0.{respuesta.numeroR}
