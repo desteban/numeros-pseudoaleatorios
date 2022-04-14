@@ -1,7 +1,7 @@
 module.exports = {
 	siteMetadata: {
 		title: `Números pseudoaleatorios`,
-		description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
+		description: `Los números pseudoaleatorios desde un punto de vista estadístico, las secuencias de números pseudoaleatorios no muestran un patrón o regularidad aparente`,
 		author: `@desteban`,
 		siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
 	},

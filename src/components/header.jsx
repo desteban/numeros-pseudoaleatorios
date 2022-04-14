@@ -3,10 +3,6 @@ import { Link } from 'gatsby';
 import { Enlace } from './index';
 
 export default class Header extends React.Component {
-	constructor(props) {
-		super(props);
-	}
-
 	componentDidMount() {
 		this.escojerTema();
 	}
@@ -80,7 +76,7 @@ export default class Header extends React.Component {
 						<span id="abrirMenu" className="material-icons click movil-visible">
 							menu
 						</span>
-						<span id="cerrarMenu" className="material-icons hide click movil-visible">
+						<span id="cerrarMenu" className="material-icons click movil-visible hide">
 							close
 						</span>
 					</div>
