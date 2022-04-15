@@ -152,18 +152,20 @@ export default class cuadradosMedios extends React.Component<PageProps, DataProp
 
 					<div className="medias pruebas">
 						<div>
-							<span className="titulo">Prueba de medias</span>
+							<span className="titulo">Prueba de medias. α=0.05</span>
 
 							<div className="hipotesis">
 								<p>
-									H<sub>0</sub> = {this.state.respuestaPruebasMedias.HipotesisNula}
-									<br />H<sub>1</sub> ={' '}
-									{this.state.respuestaPruebasMedias.HipotesisAlternativa}
+									H<sub>0</sub>: 0.5
+									<br />H<sub>1</sub>: 0.5
 								</p>
 							</div>
-							<p>
-								<span className="bar">r</span> = {this.state.respuestaPruebasMedias.promedioR}
-							</p>
+							<div>
+								<p>
+									<span className="bar">r</span> ={' '}
+									{this.state.respuestaPruebasMedias.promedioR}
+								</p>
+							</div>
 							<div className="limites">
 								<p>
 									LI<sub className="bar">r</sub> =
@@ -181,8 +183,6 @@ export default class cuadradosMedios extends React.Component<PageProps, DataProp
 								</strong>
 							</p>
 						</div>
-
-						<div></div>
 					</div>
 				</section>
 			</Layout>

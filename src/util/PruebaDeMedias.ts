@@ -1,10 +1,4 @@
-type respuesta = {
-	semilla: number;
-};
-
 export type respuestaPruebaMedias = {
-	HipotesisNula: number;
-	HipotesisAlternativa: number;
 	promedioR: number;
 	LimiteInferior: number;
 	LimiteSuperior: number;
@@ -12,8 +6,6 @@ export type respuestaPruebaMedias = {
 };
 
 export const PruebaMediasDefault: respuestaPruebaMedias = {
-	HipotesisAlternativa: 0.5,
-	HipotesisNula: 0.5,
 	promedioR: 0,
 	LimiteInferior: 0,
 	LimiteSuperior: 0,
@@ -28,9 +20,7 @@ export default function PruebaDeMedias(lista: Array<any>): respuestaPruebaMedias
 	let sumatoria: number = 0;
 
 	lista.forEach((respuesta) => {
-		let numero: number = +`0.${respuesta.numeroR}`;
-
-		sumatoria += numero;
+		sumatoria += +`0.${respuesta.numeroR}`;
 	});
 
 	let promedioR: number = (1 / n) * sumatoria;

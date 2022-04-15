@@ -1,5 +1,4 @@
 import React from 'react';
-import { Enlace } from '../components';
 
 export default function Footer() {
 	return (
@@ -15,7 +14,11 @@ export default function Footer() {
 				</ul>
 			</div>
 			<div>
-				<a href="https://github.com/desteban/numeros-pseudoaleatorios" target="_blank">
+				<a
+					href="https://github.com/desteban/numeros-pseudoaleatorios"
+					target="_blank"
+					rel="noreferrer"
+				>
 					✍️ codigo
 				</a>
 			</div>
