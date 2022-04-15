@@ -97,21 +97,21 @@ export default class Header extends React.Component {
 						<Enlace
 							href="/cuadrados-medios"
 							texto="Cuadrados medios"
-							className="item espacioHeader"
+							className="item"
 							onClick={() => this.toogleMenu()}
 						></Enlace>
 
 						<Enlace
 							href="/productos-medios"
 							texto="Productos medios"
-							className="item espacioHeader"
+							className="item"
 							onClick={() => this.toogleMenu()}
 						/>
 
 						<Enlace
 							href="/multiplicador-constante"
 							texto="Multiplicador constante"
-							className="item espacioHeader"
+							className="item"
 							onClick={() => this.toogleMenu()}
 						/>
 					</div>

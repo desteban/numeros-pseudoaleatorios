@@ -101,7 +101,7 @@
 		.item {
 			margin: 10px 1rem;
 
-			&.espacioHeader {
+			&:first-child {
 				margin-top: $tamanioheader;
 				padding-top: 0;
 			}

@@ -3,6 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300&family=Karla:wght@200&family=Roboto:wght@300&display=swap');
 @import './dark.scss';
 @import './header.scss';
+@import './footer.scss';
 
 $tamanioTitulo: 40px;
 
@@ -24,6 +25,7 @@ body {
 
 body {
 	padding: 0px;
+	font-size: 1.2rem;
 }
 
 @for $i from 1 to 4 {
@@ -32,17 +34,15 @@ body {
 		font-family: Fira Sans;
 		font-weight: bold;
 		color: $colortitulos;
-		margin: 5px 2rem 1rem 2rem;
-		padding-top: $tamanioheader;
+		margin: 5px 0rem 1.5rem 0px;
 		transition: all 0.4s ease-in-out;
-		margin-left: 0px;
 	}
 
 	$tamanioTitulo: $tamanioTitulo - 5;
 }
 
-p {
-	font-size: 1.2rem;
+a {
+	color: $colorlinks;
 }
 
 small {
@@ -132,5 +132,9 @@ small {
 }
 
 .contenido {
-	margin: 0 5%;
+	margin: ($tamanioheader + 10px) 5% 0 5%;
+}
+
+article {
+	margin-top: 2rem;
 }

@@ -10,6 +10,8 @@ import PropTypes from 'prop-types';
 import { useStaticQuery, graphql } from 'gatsby';
 
 import Header from './header';
+import Footer from './Footer';
+
 import '../sass/index.scss';
 import 'material-design-icons/iconfont/material-icons.css';
 
@@ -29,8 +31,8 @@ const Layout = ({ children }) => {
 			<Header siteTitle={data.site.siteMetadata?.title || `Title`} />
 			<div className="contenido">
 				<main>{children}</main>
-				<footer></footer>
 			</div>
+			<Footer />
 		</>
 	);
 };
