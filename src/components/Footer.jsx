@@ -15,9 +15,9 @@ export default function Footer() {
 				</ul>
 			</div>
 			<div>
-				<Enlace href="https://github.com/desteban/numeros-pseudoaleatorios" blanck={true}>
+				<a href="https://github.com/desteban/numeros-pseudoaleatorios" target="_blank">
 					✍️ codigo
-				</Enlace>
+				</a>
 			</div>
 		</footer>
 	);

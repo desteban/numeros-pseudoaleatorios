@@ -1,13 +1,15 @@
 import * as React from 'react';
 import { PageProps } from 'gatsby';
-import { Layout, Seo, Input, Enlace } from '../components';
+import { Layout, Seo, Input } from '../components';
 
-import { calcularSemillaMedios } from '../util';
+import { calcularSemillaMedios, PruebaDeMedias } from '../util';
+import { respuestaPruebaMedias, PruebaMediasDefault } from '../util/PruebaDeMedias';
 
 type DataProps = {
 	semilla?: number;
 	cantidadNumerosR?: number;
 	respuesta: Array<Respuesta>;
+	respuestaPruebasMedias: respuestaPruebaMedias;
 };
 
 type Respuesta = {
@@ -20,7 +22,12 @@ export default class cuadradosMedios extends React.Component<PageProps, DataProp
 	constructor(props: any) {
 		super(props);
 
-		this.state = { cantidadNumerosR: 2, semilla: 1234, respuesta: [] };
+		this.state = {
+			cantidadNumerosR: 2,
+			semilla: 1234,
+			respuesta: [],
+			respuestaPruebasMedias: PruebaMediasDefault,
+		};
 	}
 
 	calcular() {
@@ -54,6 +61,10 @@ export default class cuadradosMedios extends React.Component<PageProps, DataProp
 		if (cantidadNumerosR <= 0) {
 			alert('La cantidad de numero r debe será mayor a 0');
 		}
+
+		let data: respuestaPruebaMedias = PruebaDeMedias(this.state.respuesta);
+		this.setState({ respuestaPruebasMedias: data });
+		console.log(data);
 	}
 
 	agregarRespuesta(resultado: Respuesta) {
@@ -135,6 +146,45 @@ export default class cuadradosMedios extends React.Component<PageProps, DataProp
 						);
 					})}
 				</div>
+
+				<section style={{ marginTop: '1rem' }}>
+					<strong>Pruebas</strong>
+
+					<div className="medias pruebas">
+						<div>
+							<span className="titulo">Prueba de medias</span>
+
+							<div className="hipotesis">
+								<p>
+									H<sub>0</sub> = {this.state.respuestaPruebasMedias.HipotesisNula}
+									<br />H<sub>1</sub> ={' '}
+									{this.state.respuestaPruebasMedias.HipotesisAlternativa}
+								</p>
+							</div>
+							<p>
+								<span className="bar">r</span> = {this.state.respuestaPruebasMedias.promedioR}
+							</p>
+							<div className="limites">
+								<p>
+									LI<sub className="bar">r</sub> =
+									{this.state.respuestaPruebasMedias.LimiteInferior}
+									<br />
+									LS<sub className="bar">r</sub> =
+									{this.state.respuestaPruebasMedias.LimiteSuperior}
+								</p>
+							</div>
+
+							<p className="aceptar">
+								¿Aceptar hipótesis nula?{' '}
+								<strong>
+									{this.state.respuestaPruebasMedias.valorAceptacion ? 'Si' : 'No'}
+								</strong>
+							</p>
+						</div>
+
+						<div></div>
+					</div>
+				</section>
 			</Layout>
 		);
 	}
