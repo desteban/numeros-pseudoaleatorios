@@ -91,7 +91,10 @@ export default class ProductosMedios extends React.Component<PageProps, DataProp
 	render(): React.ReactNode {
 		return (
 			<Layout>
-				<Seo title="Productos medios" />
+				<Seo
+					title="Productos medios"
+					description="Calculadora de algoritmo de productos medios"
+				/>
 
 				<h1>Calculadora de productos medios</h1>
 				<div>

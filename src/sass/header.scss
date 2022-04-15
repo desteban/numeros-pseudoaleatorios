@@ -100,11 +100,6 @@
 
 		.item {
 			margin: 10px 1rem;
-
-			&:first-child {
-				margin-top: $tamanioheader;
-				padding-top: 0;
-			}
 		}
 
 		&.open {
@@ -125,6 +120,12 @@
 
 		.btn-menu {
 			display: flex;
+		}
+
+		.sidenav {
+			.item:first-child {
+				margin-top: $tamanioheader;
+			}
 		}
 	}
 }
