@@ -30,7 +30,7 @@ const IndexPage = () => (
 
 			<ol>
 				<li>
-					Seleccionar una semilla (X<sub>i</sub>) con D dígitos (D {'>'} 3right)
+					Seleccionar una semilla (X<sub>i</sub>) con D dígitos (D {'>'} 3)
 				</li>
 				<li>
 					Sea Y<sub>0</sub> el resultado de elevar X<sub>0</sub> al cuadrado; sea X<sub>1</sub>{' '}
