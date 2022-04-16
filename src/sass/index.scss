@@ -34,15 +34,20 @@ body {
 		font-family: Fira Sans;
 		font-weight: bold;
 		color: $colortitulos;
-		margin: 5px 0rem 1.5rem 0px;
+		margin: 0.8rem 0rem 1.5rem 0px;
 		transition: all 0.4s ease-in-out;
 	}
 
 	$tamanioTitulo: $tamanioTitulo - 5;
 }
 
+h2 {
+	padding-top: $tamanioheader;
+}
+
 a {
 	color: $colorlinks;
+	font-weight: bold;
 }
 
 small {
@@ -159,6 +164,26 @@ article {
 			position: absolute;
 			left: 0;
 			top: 0;
+		}
+	}
+}
+
+.ecuacion {
+	font-size: 1.5rem;
+	color: $colorlinks;
+	font-weight: bold;
+
+	img {
+		margin: 0.7rem;
+		width: 300px;
+	}
+}
+
+@media screen and (max-width: 991px) {
+	.ecuacion {
+		padding: 1rem;
+		img {
+			width: 100%;
 		}
 	}
 }

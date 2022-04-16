@@ -73,6 +73,14 @@
 	.bar {
 		border-top: 1px solid $colorparrafoDark;
 	}
+
+	.ecuacion {
+		.ecuacion-svg {
+			color: $colorparrafoDark;
+		}
+	}
+
+	// fin del dark
 }
 
 .fondo .contenido .trabajo {

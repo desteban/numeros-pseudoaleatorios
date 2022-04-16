@@ -1,6 +1,9 @@
 import * as React from 'react';
 import { Link } from 'gatsby';
 import { Layout, Seo } from '../components';
+import promedioRsvg from '../images/promedior.inline.svg';
+import limiteInferior from '../images/limiteInferior.inline.svg';
+import limiteSuperior from '../images/limiteSuperior.inline.svg';
 
 const IndexPage = () => (
 	<Layout>
@@ -130,10 +133,48 @@ const IndexPage = () => (
 			</p>
 		</article>
 
-		<div className="prebas" id="pruebas">
-			<h2>Pruebas</h2>
+		<div className="prebas">
+			<h2 id="pruebas">Pruebas</h2>
 
-			<h3>Prueba de medias</h3>
+			<article>
+				<h3>Prueba de medias</h3>
+
+				<p>
+					Una de las propiedades que deben cumplir los números del conjunto r¡, es que el valor
+					esperado sea igual a 0.5. La prueba que busca determinar lo anterior es la llamada
+					prueba de medias, en la cual se plantean las siguientes hipótesis:
+				</p>
+				<div className="ecuacion center">
+					<p>
+						H<sub>0</sub>: 0.5
+						<br />H<sub>1</sub>: 0.5
+					</p>
+				</div>
+				<p>
+					La prueba de medias consiste en determinar el promedio de los números que contiene el
+					conjunto r mediante la ecuación siguiente:
+				</p>
+				<div className="ecuacion center">
+					<img src={promedioRsvg} alt="Ecuacion de promedio" style={{ maxWidth: 150 }} />
+				</div>
+
+				<p>
+					Después se calculan los límites de aceptación inferior y superior con las ecuaciones
+					siguientes:
+				</p>
+				<div className="ecuacion center limites">
+					<img src={limiteInferior} alt="Ecuacion para calcular el limite inferior" />
+					<br />
+					<img src={limiteSuperior} alt="Ecuacion para calcular el limite superior" />
+				</div>
+
+				<p>
+					Si el valor de <span className="bar">r</span> se encuentra entre los límites de
+					aceptación, concluimos que no se puede rechazar que el conjunto r<sub>i</sub> tiene
+					un valor esperado de 0.5 con un nivel de aceptación de 1 - α. En caso contrario se
+					rechaza que el conjunto r<sub>i</sub> tiene un valor esperado de 0.5.
+				</p>
+			</article>
 		</div>
 	</Layout>
 );
