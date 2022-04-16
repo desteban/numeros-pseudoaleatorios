@@ -15,7 +15,7 @@ const IndexPage = () => (
 		</p>
 		<article>
 			<Link to="/cuadrados-medios">
-				<h2>Cuadrados medios </h2>
+				<h2>Cuadrados medios</h2>
 			</Link>
 			<p>
 				Este algoritmo no congruencial fue propuesto en la década de los cuarenta del siglo XX

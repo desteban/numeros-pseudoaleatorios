@@ -1,9 +1,13 @@
 import * as React from 'react';
 import { PageProps } from 'gatsby';
 
-import { Input, Layout, Seo } from '../components';
-import { calcularSemillaMedios, PruebaDeMedias } from '../util';
-import { respuestaPruebaMedias, PruebaMediasDefault } from '../util/PruebaDeMedias';
+import { Input, Layout, Seo, PruebaMedias } from '../components';
+import {
+	calcularSemillaMedios,
+	PruebaDeMedias,
+	respuestaPruebaMedias,
+	PruebaMediasDefault,
+} from '../util';
 
 type DataProps = {
 	multiplicador?: number;
@@ -78,6 +82,7 @@ export default class ProductosMedios extends React.Component<PageProps, DataProp
 		}
 
 		let data: respuestaPruebaMedias = PruebaDeMedias(this.state.respuesta);
+		this.setState({ respuestaPruebasMedias: data });
 	}
 
 	limpiarRespuestas() {
@@ -148,6 +153,8 @@ export default class ProductosMedios extends React.Component<PageProps, DataProp
 					</button>
 				</div>
 
+				<PruebaMedias prueba={this.state.respuestaPruebasMedias} />
+
 				<div className="resultado card round">
 					<strong>Resultados:</strong>
 
@@ -168,42 +175,6 @@ export default class ProductosMedios extends React.Component<PageProps, DataProp
 						);
 					})}
 				</div>
-
-				<section style={{ marginTop: '1rem' }}>
-					<strong>Pruebas</strong>
-
-					<div className="medias pruebas">
-						<div>
-							<span className="titulo">Prueba de medias</span>
-
-							<div className="hipotesis">
-								<p>
-									H<sub>0</sub>: 0.5
-									<br />H<sub>1</sub>: 0.5
-								</p>
-							</div>
-							<p>
-								<span className="bar">r</span> = {this.state.respuestaPruebasMedias.promedioR}
-							</p>
-							<div className="limites">
-								<p>
-									LI<sub className="bar">r</sub> =
-									{this.state.respuestaPruebasMedias.LimiteInferior}
-									<br />
-									LS<sub className="bar">r</sub> =
-									{this.state.respuestaPruebasMedias.LimiteSuperior}
-								</p>
-							</div>
-
-							<p className="aceptar">
-								¿Aceptar hipótesis nula?{' '}
-								<strong>
-									{this.state.respuestaPruebasMedias.valorAceptacion ? 'Si' : 'No'}
-								</strong>
-							</p>
-						</div>
-					</div>
-				</section>
 			</Layout>
 		);
 	}

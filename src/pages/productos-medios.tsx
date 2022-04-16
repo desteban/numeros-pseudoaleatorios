@@ -1,14 +1,20 @@
 import * as React from 'react';
 import { PageProps } from 'gatsby';
 
-import { Input, Layout, Seo } from '../components';
-import { calcularSemillaMedios } from '../util';
+import { Input, Layout, Seo, PruebaMedias } from '../components';
+import {
+	calcularSemillaMedios,
+	PruebaDeMedias,
+	respuestaPruebaMedias,
+	PruebaMediasDefault,
+} from '../util';
 
 type DataProps = {
 	semilla1?: number;
 	semilla2?: number;
 	cantidadNumerosR?: number;
 	respuesta: Array<Respuesta>;
+	respuestaPruebasMedias: respuestaPruebaMedias;
 };
 
 type Respuesta = {
@@ -24,7 +30,13 @@ export default class ProductosMedios extends React.Component<PageProps, DataProp
 	constructor(props: any) {
 		super(props);
 
-		this.state = { respuesta: [], cantidadNumerosR: 1, semilla1: 1234, semilla2: 4321 };
+		this.state = {
+			respuesta: [],
+			cantidadNumerosR: 1,
+			semilla1: 1234,
+			semilla2: 4321,
+			respuestaPruebasMedias: PruebaMediasDefault,
+		};
 	}
 
 	calcular() {
@@ -69,6 +81,9 @@ export default class ProductosMedios extends React.Component<PageProps, DataProp
 		if (cantidadNumerosR <= 0) {
 			alert('La cantidad de numero r debe será mayor a 0');
 		}
+
+		let data: respuestaPruebaMedias = PruebaDeMedias(this.state.respuesta);
+		this.setState({ respuestaPruebasMedias: data });
 	}
 
 	limpiarRespuestas() {
@@ -138,6 +153,8 @@ export default class ProductosMedios extends React.Component<PageProps, DataProp
 						Calcular
 					</button>
 				</div>
+
+				<PruebaMedias prueba={this.state.respuestaPruebasMedias} />
 
 				<div className="resultado card round">
 					<strong>Resultados:</strong>
