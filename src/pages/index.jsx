@@ -129,6 +129,12 @@ const IndexPage = () => (
 				</Link>
 			</p>
 		</article>
+
+		<div className="prebas" id="pruebas">
+			<h2>Pruebas</h2>
+
+			<h3>Prueba de medias</h3>
+		</div>
 	</Layout>
 );
 

@@ -53,6 +53,7 @@ export default class Header extends React.Component {
 	}
 
 	toogleMenu() {
+		console.log('toogle');
 		let width = window.screen.width;
 
 		if (width <= 991) {
@@ -94,28 +95,20 @@ export default class Header extends React.Component {
 					</div>
 
 					<div className="sidenav" id="sidenav">
-						<Enlace
-							href="/cuadrados-medios"
-							className="item"
-							onClick={() => this.toogleMenu()}
-						>
+						<Enlace href="/cuadrados-medios" className="item" onClick={this.toogleMenu}>
 							Cuadrados medios
 						</Enlace>
 
-						<Enlace
-							href="/productos-medios"
-							className="item"
-							onClick={() => this.toogleMenu()}
-						>
+						<Enlace href="/productos-medios" className="item" onClick={this.toogleMenu}>
 							Productos medios
 						</Enlace>
 
-						<Enlace
-							href="/multiplicador-constante"
-							className="item"
-							onClick={() => this.toogleMenu()}
-						>
+						<Enlace href="/multiplicador-constante" className="item" onClick={this.toogleMenu}>
 							Multiplicador constante
+						</Enlace>
+
+						<Enlace href="/#pruebas" className="item" onClick={this.toogleMenu}>
+							Pruebas
 						</Enlace>
 					</div>
 				</nav>

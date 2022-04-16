@@ -9,7 +9,6 @@
 	background-color: $fondo;
 	color: $colortitulos;
 	z-index: 1;
-	font-size: 20px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -135,6 +134,7 @@
 		justify-content: space-between;
 
 		a {
+			font-size: 1.25rem;
 			&:hover {
 				transform: scale(1.2);
 			}

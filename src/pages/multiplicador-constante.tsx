@@ -107,7 +107,7 @@ export default class ProductosMedios extends React.Component<PageProps, DataProp
 			<Layout>
 				<Seo
 					title="Productos medios"
-					description="Calculadora de algoritmo de multiplicador constante"
+					description="Calculadora de números pseudoaleatorios por medio del algoritmo de multiplicador constante"
 				/>
 
 				<h1>Calculadora de productos medios</h1>

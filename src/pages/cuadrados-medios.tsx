@@ -92,7 +92,7 @@ export default class cuadradosMedios extends React.Component<PageProps, DataProp
 			<Layout>
 				<Seo
 					title="Calculadora Cuadrados Medios"
-					description={`Calculadora de algoritmo de cuadrados medios`}
+					description={`Calculadora de números pseudoaleatorios por medio del algoritmo de cuadrados medios`}
 				/>
 				<h1>Calculadora algoritmo de cuadrados medios</h1>
 				<div>

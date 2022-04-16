@@ -12,7 +12,7 @@ export const PruebaMediasDefault: respuestaPruebaMedias = {
 	valorAceptacion: false,
 };
 
-export default function PruebaDeMedias(lista: Array<any>): respuestaPruebaMedias {
+export function PruebaDeMedias(lista: Array<any>): respuestaPruebaMedias {
 	let Zalphamedios: number = 1.95996;
 	let respuesta: respuestaPruebaMedias = PruebaMediasDefault;
 
