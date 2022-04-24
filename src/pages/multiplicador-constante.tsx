@@ -41,9 +41,7 @@ export default class ProductosMedios extends React.Component<PageProps, DataProp
 	calcular() {
 		this.limpiarRespuestas();
 
-		let multiplicador: number = this.state.multiplicador;
-		let semilla: number = this.state.semilla;
-		let cantidadNumerosR: number = this.state.cantidadNumerosR;
+		let { multiplicador, semilla, cantidadNumerosR } = this.state;
 
 		if (
 			(String(multiplicador).length > 3 &&

@@ -36,10 +36,8 @@ export default class cuadradosMedios extends React.Component<PageProps, DataProp
 
 	calcular() {
 		this.limpiarRespuestas();
-
-		let semilla: number = this.state.semilla;
+		let { semilla, cantidadNumerosR } = this.state;
 		let semillaAnterior: string = `${semilla}`;
-		let cantidadNumerosR = this.state.cantidadNumerosR;
 
 		if (String(semilla).length > 3 && semilla !== undefined && cantidadNumerosR >= 1) {
 			for (let i = 0; i < cantidadNumerosR; i++) {
@@ -73,8 +71,7 @@ export default class cuadradosMedios extends React.Component<PageProps, DataProp
 	agregarRespuesta(resultado: Respuesta) {
 		let respuestas: Array<Respuesta> = this.state.respuesta;
 		respuestas.push(resultado);
-
-		this.setState({ respuesta: respuestas });
+		this.state.respuesta.push(resultado);
 	}
 
 	enter(event: React.KeyboardEvent) {
