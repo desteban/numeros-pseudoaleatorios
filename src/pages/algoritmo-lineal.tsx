@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { PageProps } from 'gatsby';
 import { Input, PruebaMedias, Seo, Layout } from '../components';
-import { respuestaPruebaMedias, PruebaMediasDefault } from '../util';
+import { respuestaPruebaMedias, PruebaMediasDefault, PruebaDeMedias } from '../util';
 
 type DataProps = {
 	semilla: number;
@@ -67,6 +67,9 @@ export default class algoritmoLineal extends React.Component<PageProps, DataProp
 		if (cantidadNumerosR <= 0) {
 			alert('La cantidad de numero r debe será mayor a 0');
 		}
+
+		let data: respuestaPruebaMedias = PruebaDeMedias(this.state.respuesta);
+		this.setState({ respuestaPruebasMedias: data });
 	}
 
 	enter(event: React.KeyboardEvent) {
@@ -155,6 +158,8 @@ export default class algoritmoLineal extends React.Component<PageProps, DataProp
 						Calcular
 					</button>
 				</div>
+
+				<PruebaMedias prueba={this.state.respuestaPruebasMedias} />
 
 				<div className="resultado card round">
 					<strong>Resultados:</strong>
