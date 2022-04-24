@@ -107,6 +107,10 @@ export default class Header extends React.Component {
 							Multiplicador constante
 						</Enlace>
 
+						<Enlace href="/algoritmo-lineal" className="item" onClick={this.toogleMenu}>
+							Algoritmo lineal
+						</Enlace>
+
 						<Enlace href="/#pruebas" className="item" onClick={this.toogleMenu}>
 							Pruebas
 						</Enlace>
