@@ -1,7 +1,14 @@
 import * as React from 'react';
 import { PageProps } from 'gatsby';
 import { Input, PruebaMedias, Seo, Layout } from '../components';
-import { respuestaPruebaMedias, PruebaMediasDefault, PruebaDeMedias } from '../util';
+import {
+	respuestaPruebaMedias,
+	PruebaMediasDefault,
+	PruebaDeMedias,
+	respuestaPruebaVarianza,
+	respuestaPruebaVarianzaDefault,
+	pruebaVarianza,
+} from '../util';
 
 type DataProps = {
 	semilla: number;
@@ -11,6 +18,7 @@ type DataProps = {
 	cantidadNumerosR?: number;
 	respuesta: Array<Respuesta>;
 	respuestaPruebasMedias: respuestaPruebaMedias;
+	respuestaPruebasVarianza: respuestaPruebaVarianza;
 };
 
 type Respuesta = {
@@ -35,7 +43,10 @@ export default class algoritmoLineal extends React.Component<PageProps, DataProp
 			modulo: 90,
 			respuesta: [],
 			respuestaPruebasMedias: PruebaMediasDefault,
+			respuestaPruebasVarianza: respuestaPruebaVarianzaDefault,
 		};
+
+		this.state.respuestaPruebasMedias.ver = false;
 	}
 
 	calcular() {
@@ -58,8 +69,9 @@ export default class algoritmoLineal extends React.Component<PageProps, DataProp
 				semilla = respuesta.resultado;
 
 				let data: respuestaPruebaMedias = PruebaDeMedias(this.state.respuesta);
+				let pruebaDeVarianza: respuestaPruebaVarianza = pruebaVarianza(this.state.respuesta);
 
-				this.agregarRespuesta(respuesta, data);
+				this.agregarRespuesta(respuesta, data, pruebaDeVarianza);
 			}
 		}
 
@@ -82,11 +94,19 @@ export default class algoritmoLineal extends React.Component<PageProps, DataProp
 		this.state.respuesta.splice(0, this.state.respuesta.length);
 	}
 
-	agregarRespuesta(resultado: Respuesta, PruebaDeMedias: respuestaPruebaMedias) {
+	agregarRespuesta(
+		resultado: Respuesta,
+		PruebaDeMedias: respuestaPruebaMedias,
+		varianza: respuestaPruebaVarianza
+	) {
 		let respuestas: Array<Respuesta> = this.state.respuesta;
 		respuestas.push(resultado);
 
-		this.setState({ respuesta: respuestas });
+		this.setState({
+			respuesta: respuestas,
+			respuestaPruebasMedias: PruebaDeMedias,
+			respuestaPruebasVarianza: varianza,
+		});
 	}
 
 	render(): React.ReactNode {
@@ -159,7 +179,10 @@ export default class algoritmoLineal extends React.Component<PageProps, DataProp
 					</button>
 				</div>
 				{this.state.respuestaPruebasMedias.ver
-					? PruebaMedias({ prueba: this.state.respuestaPruebasMedias })
+					? PruebaMedias({
+							prueba: this.state.respuestaPruebasMedias,
+							varianza: this.state.respuestaPruebasVarianza,
+					  })
 					: null}
 
 				<div className="resultado card round">

@@ -7,6 +7,9 @@ import {
 	PruebaDeMedias,
 	respuestaPruebaMedias,
 	PruebaMediasDefault,
+	respuestaPruebaVarianza,
+	respuestaPruebaVarianzaDefault,
+	pruebaVarianza,
 } from '../util';
 
 type DataProps = {
@@ -14,6 +17,7 @@ type DataProps = {
 	cantidadNumerosR?: number;
 	respuesta: Array<Respuesta>;
 	respuestaPruebasMedias: respuestaPruebaMedias;
+	respuestaPruebasVarianza: respuestaPruebaVarianza;
 };
 
 type Respuesta = {
@@ -27,11 +31,13 @@ export default class cuadradosMedios extends React.Component<PageProps, DataProp
 		super(props);
 
 		this.state = {
-			cantidadNumerosR: 2,
+			cantidadNumerosR: 5,
 			semilla: 1234,
 			respuesta: [],
 			respuestaPruebasMedias: PruebaMediasDefault,
+			respuestaPruebasVarianza: respuestaPruebaVarianzaDefault,
 		};
+		this.state.respuestaPruebasMedias.ver = false;
 	}
 
 	calcular() {
@@ -45,12 +51,17 @@ export default class cuadradosMedios extends React.Component<PageProps, DataProp
 				let numeroR: string = calcularSemillaMedios(`${cuadrado}`);
 				semilla = +numeroR;
 
-				this.agregarRespuesta({
+				let respuesta: Respuesta = {
 					semilla: semillaAnterior,
 					cuadrado,
 					numeroR,
-				});
+				};
+
 				semillaAnterior = numeroR;
+				let data: respuestaPruebaMedias = PruebaDeMedias(this.state.respuesta);
+				let pruebaDeVarianza: respuestaPruebaVarianza = pruebaVarianza(this.state.respuesta);
+
+				this.agregarRespuesta(respuesta, data, pruebaDeVarianza);
 			}
 		}
 
@@ -68,10 +79,19 @@ export default class cuadradosMedios extends React.Component<PageProps, DataProp
 		this.setState({ respuestaPruebasMedias: data });
 	}
 
-	agregarRespuesta(resultado: Respuesta) {
+	agregarRespuesta(
+		resultado: Respuesta,
+		PruebaDeMedias: respuestaPruebaMedias,
+		varianza: respuestaPruebaVarianza
+	) {
 		let respuestas: Array<Respuesta> = this.state.respuesta;
 		respuestas.push(resultado);
-		this.state.respuesta.push(resultado);
+
+		this.setState({
+			respuesta: respuestas,
+			respuestaPruebasMedias: PruebaDeMedias,
+			respuestaPruebasVarianza: varianza,
+		});
 	}
 
 	enter(event: React.KeyboardEvent) {
@@ -125,7 +145,10 @@ export default class cuadradosMedios extends React.Component<PageProps, DataProp
 				</div>
 
 				{this.state.respuestaPruebasMedias.ver
-					? PruebaMedias({ prueba: this.state.respuestaPruebasMedias })
+					? PruebaMedias({
+							prueba: this.state.respuestaPruebasMedias,
+							varianza: this.state.respuestaPruebasVarianza,
+					  })
 					: null}
 
 				<div className="resultado card round">

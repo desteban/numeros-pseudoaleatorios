@@ -1,8 +1,9 @@
 import React from 'react';
-import { respuestaPruebaMedias } from '../util';
+import { respuestaPruebaMedias, respuestaPruebaVarianza } from '../util';
 
 type props = {
 	prueba: respuestaPruebaMedias;
+	varianza: respuestaPruebaVarianza;
 };
 
 export default function PruebaMedias(props: props) {
@@ -54,6 +55,38 @@ export default function PruebaMedias(props: props) {
 						¿Aceptar hipótesis nula?{' '}
 						<strong>{props.prueba.valorAceptacion ? 'Si' : 'No'}</strong>
 					</p>
+				</div>
+			</div>
+
+			<div className="varianza pruebas">
+				<div>
+					<div className="hipotesis">
+						<p>
+							H<sub>0</sub> = 1/12
+							<br />H<sub>1</sub> != 1/12
+						</p>
+					</div>
+				</div>
+
+				<div>
+					<p>
+						V(r) = (Σ<sup>n</sup>
+						<sub>i - 1</sub>
+						(r<sub>i</sub> - <span className="bar">r</span>)<sup>2</sup>)/(n-1)
+					</p>
+
+					<p>
+						V(r) = (Σ<sup>n</sup>
+						<sub>i - 1</sub>
+						(r<sub>i</sub> - {props.varianza.promedio})<sup>2</sup>)/(
+						{props.varianza.n}-1)
+					</p>
+
+					<p>
+						V(r) = {props.varianza.varianza}/{props.varianza.n - 1}
+					</p>
+
+					<p>V(r) = {props.varianza.varianzaNumerosR}</p>
 				</div>
 			</div>
 		</section>

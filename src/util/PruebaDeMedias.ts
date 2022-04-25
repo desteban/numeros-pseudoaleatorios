@@ -5,7 +5,7 @@ export type respuestaPruebaMedias = {
 	valorAceptacion: boolean;
 	raiz?: number;
 	Zalphamedios: number;
-	ver?: boolean;
+	ver: boolean;
 	fraccion?: number;
 };
 
@@ -15,6 +15,7 @@ export const PruebaMediasDefault: respuestaPruebaMedias = {
 	LimiteSuperior: 0,
 	valorAceptacion: false,
 	Zalphamedios: 1.95996,
+	ver: false,
 };
 
 export function PruebaDeMedias(lista: Array<any>): respuestaPruebaMedias {

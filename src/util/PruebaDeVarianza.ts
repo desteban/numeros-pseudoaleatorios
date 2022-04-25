@@ -1,28 +1,28 @@
 export type respuestaPruebaVarianza = {
 	varianzaNumerosR: number;
-	LimiteInferior: number;
-	LimiteSuperior: number;
-	valorAceptacion: boolean;
+	promedio: number;
+	varianza: number;
+	n: number;
 };
 
 export const respuestaPruebaVarianzaDefault: respuestaPruebaVarianza = {
 	varianzaNumerosR: 0,
-	LimiteInferior: 0,
-	LimiteSuperior: 0,
-	valorAceptacion: false,
+	promedio: 0,
+	varianza: 0,
+	n: 0,
 };
 
-export function name(lista: Array<any>): respuestaPruebaVarianza {
+export function pruebaVarianza(lista: Array<any>): respuestaPruebaVarianza {
 	let respuesta: respuestaPruebaVarianza = respuestaPruebaVarianzaDefault;
-	let n = lista.length;
+	respuesta.n = lista.length + 1;
 	let sumatoria: number = 0;
 	let promedioR: number = 0;
-	let alpha: number = 0.05;
 
 	lista.forEach((respuesta) => {
 		sumatoria += +`0.${respuesta.numeroR}`;
 	});
-	promedioR = sumatoria / n;
+	promedioR = +(sumatoria / respuesta.n).toFixed(5);
+	respuesta.promedio = promedioR;
 
 	sumatoria = 0;
 	lista.forEach((respuesta) => {
@@ -30,8 +30,9 @@ export function name(lista: Array<any>): respuestaPruebaVarianza {
 
 		sumatoria += Math.pow(numero - promedioR, 2);
 	});
-
-	respuesta.varianzaNumerosR = sumatoria / (n - 1);
+	sumatoria = +sumatoria.toFixed(5);
+	respuesta.varianza = sumatoria;
+	respuesta.varianzaNumerosR = +(sumatoria / (respuesta.n - 1)).toFixed(5);
 
 	return respuesta;
 }
