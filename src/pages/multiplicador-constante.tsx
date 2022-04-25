@@ -182,7 +182,7 @@ export default class ProductosMedios extends React.Component<PageProps, DataProp
 									) = {respuesta.resultado}
 								</p>
 								<p>
-									X<sub>{respuesta.id + 2}</sub> = {respuesta.numeroR}
+									X<sub>{respuesta.id + 1}</sub> = {respuesta.numeroR}
 								</p>
 								<p>
 									r<sub>{respuesta.id + 1}</sub> = 0.{respuesta.numeroR}
