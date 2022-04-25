@@ -56,7 +56,10 @@ export default class algoritmoLineal extends React.Component<PageProps, DataProp
 					resultado,
 				};
 				semilla = respuesta.resultado;
-				this.agregarRespuesta(respuesta);
+
+				let data: respuestaPruebaMedias = PruebaDeMedias(this.state.respuesta);
+
+				this.agregarRespuesta(respuesta, data);
 			}
 		}
 
@@ -67,9 +70,6 @@ export default class algoritmoLineal extends React.Component<PageProps, DataProp
 		if (cantidadNumerosR <= 0) {
 			alert('La cantidad de numero r debe será mayor a 0');
 		}
-
-		let data: respuestaPruebaMedias = PruebaDeMedias(this.state.respuesta);
-		this.setState({ respuestaPruebasMedias: data });
 	}
 
 	enter(event: React.KeyboardEvent) {
@@ -82,7 +82,7 @@ export default class algoritmoLineal extends React.Component<PageProps, DataProp
 		this.state.respuesta.splice(0, this.state.respuesta.length);
 	}
 
-	agregarRespuesta(resultado: Respuesta) {
+	agregarRespuesta(resultado: Respuesta, PruebaDeMedias: respuestaPruebaMedias) {
 		let respuestas: Array<Respuesta> = this.state.respuesta;
 		respuestas.push(resultado);
 
@@ -158,8 +158,9 @@ export default class algoritmoLineal extends React.Component<PageProps, DataProp
 						Calcular
 					</button>
 				</div>
-
-				<PruebaMedias prueba={this.state.respuestaPruebasMedias} />
+				{this.state.respuestaPruebasMedias.ver
+					? PruebaMedias({ prueba: this.state.respuestaPruebasMedias })
+					: null}
 
 				<div className="resultado card round">
 					<strong>Resultados:</strong>

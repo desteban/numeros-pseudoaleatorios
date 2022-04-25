@@ -149,6 +149,8 @@ article {
 }
 
 .pruebas {
+	border-bottom: 1px solid $fondoboton;
+
 	& > div {
 		margin-top: 8px;
 		padding-top: 5px;
@@ -158,7 +160,6 @@ article {
 		flex-wrap: wrap;
 		align-items: center;
 		justify-content: space-around;
-		border-bottom: 1px solid $fondoboton;
 
 		.titulo {
 			position: absolute;

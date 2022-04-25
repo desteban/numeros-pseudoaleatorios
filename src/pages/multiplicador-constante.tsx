@@ -151,7 +151,9 @@ export default class ProductosMedios extends React.Component<PageProps, DataProp
 					</button>
 				</div>
 
-				<PruebaMedias prueba={this.state.respuestaPruebasMedias} />
+				{this.state.respuestaPruebasMedias.ver
+					? PruebaMedias({ prueba: this.state.respuestaPruebasMedias })
+					: null}
 
 				<div className="resultado card round">
 					<strong>Resultados:</strong>

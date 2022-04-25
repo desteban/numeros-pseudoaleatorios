@@ -11,9 +11,26 @@ export default function PruebaMedias(props: props) {
 			<strong>Pruebas</strong>
 
 			<div className="medias pruebas">
-				<div>
-					<span className="titulo">Prueba de medias. α=0.05</span>
+				<span className="titulo">Prueba de medias. α=0.05</span>
 
+				<div>
+					<p>
+						LI<sub>i</sub> = 0.5 - Z<sub>α/2</sub>[1/√(12𝑛)]
+					</p>
+					<p>
+						LS<sub>i</sub> = 0.5 + Z<sub>α/2</sub>[1/√(12𝑛)]
+					</p>
+				</div>
+				<div>
+					<p>
+						Z<sub>α/2</sub> = {props.prueba.Zalphamedios}
+					</p>
+					<p>
+						1/√(12𝑛) = 1/({props.prueba.raiz}) = {props.prueba.fraccion}
+					</p>
+				</div>
+
+				<div>
 					<div className="hipotesis">
 						<p>
 							H<sub>0</sub>: 0.5
