@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Link } from 'gatsby';
-import { Enlace } from './index';
 
 export default class Header extends React.Component {
 	componentDidMount() {
@@ -53,20 +52,15 @@ export default class Header extends React.Component {
 	}
 
 	toogleMenu() {
-		console.log('toogle');
-		let width = window.screen.width;
+		let sidenav = document.getElementById('sidenav');
+		let abrirMenu = document.getElementById('abrirMenu');
+		let cerrarMenu = document.getElementById('cerrarMenu');
+		let nav = document.getElementById('nav');
 
-		if (width <= 991) {
-			let sidenav = document.getElementById('sidenav');
-			let abrirMenu = document.getElementById('abrirMenu');
-			let cerrarMenu = document.getElementById('cerrarMenu');
-			let nav = document.getElementById('nav');
-
-			sidenav?.classList.toggle('open');
-			abrirMenu?.classList.toggle('hide');
-			cerrarMenu?.classList.toggle('hide');
-			nav?.classList.toggle('active');
-		}
+		sidenav?.classList.toggle('open');
+		abrirMenu?.classList.toggle('hide');
+		cerrarMenu?.classList.toggle('hide');
+		nav?.classList.toggle('active');
 	}
 
 	render() {
@@ -95,25 +89,25 @@ export default class Header extends React.Component {
 					</div>
 
 					<div className="sidenav" id="sidenav">
-						<Enlace href="/cuadrados-medios" className="item" onClick={this.toogleMenu}>
+						<Link to="/cuadrados-medios" className="item" onClick={() => this.toogleMenu()}>
 							Cuadrados medios
-						</Enlace>
-
-						<Enlace href="/productos-medios" className="item" onClick={this.toogleMenu}>
+						</Link>
+						<Link to="/productos-medios" className="item" onClick={() => this.toogleMenu()}>
 							Productos medios
-						</Enlace>
-
-						<Enlace href="/multiplicador-constante" className="item" onClick={this.toogleMenu}>
+						</Link>
+						<Link
+							to="/multiplicador-constante"
+							className="item"
+							onClick={() => this.toogleMenu()}
+						>
 							Multiplicador constante
-						</Enlace>
-
-						<Enlace href="/algoritmo-lineal" className="item" onClick={this.toogleMenu}>
+						</Link>
+						<Link to="/algoritmo-lineal" className="item" onClick={() => this.toogleMenu()}>
 							Algoritmo lineal
-						</Enlace>
-
-						<Enlace href="/#pruebas" className="item" onClick={this.toogleMenu}>
+						</Link>
+						<Link to="/#pruebas" className="item" onClick={() => this.toogleMenu()}>
 							Pruebas
-						</Enlace>
+						</Link>
 					</div>
 				</nav>
 			</header>
